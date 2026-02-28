@@ -1,0 +1,42 @@
+[project]
+name = "desafio-mirante"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "tianjos", email = "thiago.brito700@gmail.com" }
+]
+requires-python = ">=3.14"
+dependencies = []
+
+[project.scripts]
+desafio-mirante = "desafio_mirante:main"
+
+[build-system]
+requires = ["uv_build>=0.9.28,<0.10.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.2",
+    "ruff>=0.15.4",
+    "taskipy>=1.14.1",
+]
+
+[tool.taskipy.tasks]
+lint = 'ruff check'
+pre_format = 'ruff check --fix'
+format = 'ruff format'
+dev = 'uv run python src/desafio_mirante/main.py'
+
+[tool.ruff]
+line-length = 85
+
+[tool.ruff.format]
+preview = true
+quote-style = 'single'
+
+[tool.pytest.ini_options]
+pythonpath = ['src', 'tests']
+asyncio_mode = 'auto'
+addopts = '-p no:warnings'
