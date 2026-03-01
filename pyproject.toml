@@ -19,6 +19,7 @@ build-backend = "uv_build"
 [dependency-groups]
 dev = [
     "pytest>=9.0.2",
+    "pytest-cov>=7.0.0",
     "ruff>=0.15.4",
     "taskipy>=1.14.1",
 ]
@@ -28,6 +29,9 @@ lint = 'ruff check'
 pre_format = 'ruff check --fix'
 format = 'ruff format'
 dev = 'uv run python src/desafio_mirante/main.py'
+test-unit = 'uv run pytest -m unit'
+test-e2e = 'uv run pytest -m e2e'
+test-coverage = 'uv run pytest -s -x --cov=desafio_mirante -vv'
 
 [tool.ruff]
 line-length = 85

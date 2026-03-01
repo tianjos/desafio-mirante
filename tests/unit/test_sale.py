@@ -8,6 +8,7 @@ from desafio_mirante.core.sale_item import SaleItem
 from desafio_mirante.core.money import Money
 
 
+@pytest.mark.unit
 def test_total_sales_by_product():
     sale = Sale(
         items=[
@@ -35,6 +36,7 @@ def test_total_sales_by_product():
     }
 
 
+@pytest.mark.unit
 def test_total_sales():
     sale = Sale(
         items=[
@@ -59,7 +61,7 @@ def test_total_sales():
     assert sale.total() == Money(Decimal('70.0'))
 
 
-@pytest.mark.skip()
+@pytest.mark.unit
 def test_best_selling_product():
     sale = Sale(
         items=[
@@ -86,6 +88,6 @@ def test_best_selling_product():
         ]
     )
 
-    assert sale.best_selling_product() == Product(
-        name='Product A', price=Money(Decimal('10.0'))
+    assert sale.most_sold_product() == Product(
+        name='Product B', price=Money(Decimal('20.0'))
     )

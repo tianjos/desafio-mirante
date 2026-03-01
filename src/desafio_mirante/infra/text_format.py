@@ -7,7 +7,7 @@ class TextFormat:
 
     def format(self) -> str:
         total = self.sale.total()
-        best_selling_product = self.sale.best_selling_product()
+        most_sold_product = self.sale.most_sold_product()
         total_by_product = self.sale.total_by_product()
 
         lines = []
@@ -17,5 +17,5 @@ class TextFormat:
                 f'{product.name} - {quantity} x BRL {product.price} = BRL {total_price}'
             )
         lines.append(f'Total: BRL {total}')
-        lines.append(f'Best selling product: {best_selling_product.name}')
+        lines.append(f'Most sold product: {most_sold_product.name}')
         return '\n'.join(lines)
