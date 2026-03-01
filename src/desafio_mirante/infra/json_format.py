@@ -1,6 +1,6 @@
 import json
 
-from desafio_mirante.core.sale import Sale
+from desafio_mirante.core.entities.sale import Sale
 from desafio_mirante.infra.domain_encoder import DomainEncoder
 
 

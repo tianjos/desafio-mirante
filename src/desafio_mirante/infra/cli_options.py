@@ -4,7 +4,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import TypedDict
 
-from desafio_mirante.core.format import Format
+from desafio_mirante.core.entities.format import Format
 
 logger = logging.getLogger(__name__)
 

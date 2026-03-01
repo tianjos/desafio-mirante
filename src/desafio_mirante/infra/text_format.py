@@ -1,5 +1,5 @@
-from desafio_mirante.core.money import Money
-from desafio_mirante.core.sale import Sale
+from desafio_mirante.core.entities.money import Money
+from desafio_mirante.core.entities.sale import Sale
 
 
 class TextFormat:

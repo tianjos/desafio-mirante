@@ -3,8 +3,8 @@ from dataclasses import dataclass, field
 from datetime import datetime
 from functools import cached_property
 
-from desafio_mirante.core.sale_item import SaleItem
-from desafio_mirante.core.product import Product
+from desafio_mirante.core.entities.sale_item import SaleItem
+from desafio_mirante.core.entities.product import Product
 
 
 @dataclass(frozen=True)

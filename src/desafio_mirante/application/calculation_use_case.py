@@ -1,12 +1,12 @@
 from datetime import datetime
 from decimal import Decimal
 
-from desafio_mirante.core.money import Money
-from desafio_mirante.core.product import Product
-from desafio_mirante.core.sale import Sale
-from desafio_mirante.core.sale_item import SaleItem
+from desafio_mirante.core.entities.money import Money
+from desafio_mirante.core.entities.product import Product
+from desafio_mirante.core.entities.sale import Sale
+from desafio_mirante.core.entities.sale_item import SaleItem
 from desafio_mirante.core.dtos.args import ArgsDTO
-from desafio_mirante.core.format import Format
+from desafio_mirante.core.entities.format import Format
 from desafio_mirante.infra.file_parser import SaleParser
 from desafio_mirante.infra.text_format import TextFormat
 from desafio_mirante.infra.json_format import JsonFormat
