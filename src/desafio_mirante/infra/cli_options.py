@@ -31,7 +31,7 @@ def parse_date(value: str) -> datetime:
         raise ValueError(f'Invalid date format: {value}. Expected YYYY-MM-DD.')
 
 
-class InputOptions:
+class CLIOptions:
     def __init__(self):
         self._parser = ArgumentParser(
             prog='desafio-mirante',

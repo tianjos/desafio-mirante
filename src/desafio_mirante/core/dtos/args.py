@@ -5,8 +5,8 @@ from pathlib import Path
 from desafio_mirante.core.format import Format
 
 
-@dataclass(frozen=True)
-class Arguments:
+@dataclass(frozen=True, kw_only=True)
+class ArgsDTO:
     file: Path
     format: Format
     start: datetime | None = field(default=None)
