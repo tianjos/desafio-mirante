@@ -62,7 +62,7 @@ def test_total_sales():
 
 
 @pytest.mark.unit
-def test_best_selling_product():
+def test_most_sold_product():
     sale = Sale(
         items=[
             SaleItem(
