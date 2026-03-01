@@ -15,15 +15,6 @@ def main():
     result = app.run(args_dto=args_dto)
 
     print(result)
-    # input_parser = Input()
-    # input_args = input_parser.as_arguments()
-    # csv_parser = CsvParser(file_path=input_args.file)
-    # calculation_service = CalculationService(
-    #     csv_parser=csv_parser, input_arguments=input_args
-    # )
-
-    # results = calculation_service.execute()
-    # print(results)
 
 
 if __name__ == '__main__':
