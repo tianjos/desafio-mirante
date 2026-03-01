@@ -13,4 +13,3 @@ class SaleItem:
 
     def total_price(self):
         return Money(self.product.price.amount * self.quantity)
-

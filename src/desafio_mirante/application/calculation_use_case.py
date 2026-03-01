@@ -11,6 +11,7 @@ from desafio_mirante.infra.file_parser import SaleParser
 from desafio_mirante.infra.text_format import TextFormat
 from desafio_mirante.infra.json_format import JsonFormat
 
+
 class CalculationUseCase:
     def __init__(self, parser: SaleParser):
         self.parser = parser
@@ -22,16 +23,18 @@ class CalculationUseCase:
         for item in items:
             product = Product(name=item.name, price=Money(Decimal(item.price)))
             sale_items.append(
-            SaleItem(
-                product=product,
-                sold_at=datetime.fromisoformat(item.sold_at),
-                quantity=int(item.quantity),
+                SaleItem(
+                    product=product,
+                    sold_at=datetime.fromisoformat(item.sold_at),
+                    quantity=int(item.quantity),
+                )
             )
+
+        sale = Sale(
+            items=sale_items, start_at=args_dto.start, end_at=args_dto.end
         )
 
-        sale = Sale(items=sale_items)
-
-        if args_dto.format == Format.TEXT: 
+        if args_dto.format == Format.TEXT:
             return TextFormat(sale).format()
 
         return JsonFormat(sale).format()

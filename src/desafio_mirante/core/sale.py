@@ -35,9 +35,10 @@ class Sale:
         return dict(total)
 
     def total(self):
-        return sum(sale_item.total_price() for sale_item in self.filtered_by_date_range)
+        return sum(
+            sale_item.total_price() for sale_item in self.filtered_by_date_range
+        )
 
     def most_sold_product(self):
         products = self.total_by_product()
         return max(products, key=products.get)
-    

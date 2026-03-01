@@ -40,4 +40,3 @@ class Money:
 
     def __str__(self):
         return f'{self.amount.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)}'
-

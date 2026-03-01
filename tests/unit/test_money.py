@@ -38,7 +38,7 @@ def test_money_comparison():
 @pytest.mark.unit
 def test_money_serialization():
     money = Money(Decimal('15.50'))
-    
+
     assert str(money) == '15.50'
     assert f'{money}' == '15.50'
 
@@ -49,7 +49,7 @@ def test_money_addition():
     money2 = Money(Decimal('5.00'))
 
     result = money1 + money2
-    
+
     assert result == Money(Decimal('15.00'))
 
 
@@ -57,18 +57,19 @@ def test_money_addition():
 def test_money_subtraction():
     money1 = Money(Decimal('10.00'))
     money2 = Money(Decimal('5.00'))
-    
+
     result = money1 - money2
-    
+
     assert result == Money(Decimal('5.00'))
+
 
 @pytest.mark.unit
 def test_money_multiplication():
     money1 = Money(Decimal('10.00'))
     money2 = Money(Decimal('2.00'))
-    
+
     result = money1 * money2
-    
+
     assert result == Money(Decimal('20.00'))
 
 
@@ -76,9 +77,9 @@ def test_money_multiplication():
 def test_money_division():
     money1 = Money(Decimal('10.00'))
     money2 = Money(Decimal('2.00'))
-    
+
     result = money1 / money2
-    
+
     assert result == Money(Decimal('5.00'))
 
 
@@ -86,27 +87,27 @@ def test_money_division():
 def test_money_division_by_zero():
     money1 = Money(Decimal('10.00'))
     money2 = Money(Decimal('0.00'))
-    
+
     result = money1 / money2
-    
+
     assert result == Money(Decimal('0.00'))
 
 
 @pytest.mark.unit
 def test_money_negation():
     money = Money(Decimal('10.00'))
-    
+
     result = -money
-    
+
     assert result == Money(Decimal('-10.00'))
 
 
 @pytest.mark.unit
 def test_money_abs():
     money = Money(Decimal('-10.00'))
-    
+
     result = abs(money)
-    
+
     assert result == Money(Decimal('10.00'))
 
 
@@ -114,6 +115,6 @@ def test_money_abs():
 def test_money_bool():
     money1 = Money(Decimal('0.00'))
     money2 = Money(Decimal('10.00'))
-    
+
     assert not money1
     assert money2

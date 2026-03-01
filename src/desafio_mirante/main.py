@@ -9,7 +9,7 @@ def main():
     setup_logger()
     cli = CLI()
     args_dto = cli.as_arguments()
-    
+
     use_case = CalculationUseCase(parser=SaleParser())
     app = App(use_case=use_case)
     result = app.run(args_dto=args_dto)
@@ -24,6 +24,7 @@ def main():
 
     # results = calculation_service.execute()
     # print(results)
+
 
 if __name__ == '__main__':
     main()

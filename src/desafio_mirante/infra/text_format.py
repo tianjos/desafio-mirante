@@ -1,6 +1,7 @@
 from desafio_mirante.core.money import Money
 from desafio_mirante.core.sale import Sale
 
+
 class TextFormat:
     def __init__(self, sale: Sale):
         self.sale = sale

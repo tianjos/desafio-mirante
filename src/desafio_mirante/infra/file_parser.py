@@ -6,6 +6,7 @@ from desafio_mirante.core.dtos.sale_item import SaleItemDTO
 
 logger = logging.getLogger(__name__)
 
+
 class SaleParser(FileParser[SaleItemDTO]):
     def from_csv(self, file_path: str) -> list[SaleItemDTO]:
         with open(file_path, 'r', encoding='utf-8', newline='') as csv_file:
@@ -13,5 +14,5 @@ class SaleParser(FileParser[SaleItemDTO]):
             try:
                 return [SaleItemDTO(**row) for row in reader]
             except TypeError as e:
-                logger.error(f"Error parsing CSV file: {e}")
-                raise ValueError("Missing required fields in CSV file")
+                logger.error(f'Error parsing CSV file: {e}')
+                raise ValueError('Missing required fields in CSV file')
