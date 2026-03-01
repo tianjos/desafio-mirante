@@ -1,12 +1,12 @@
 import json
 
-from desafio_mirante.core.entities.sale import Sale
+from desafio_mirante.core.entities.report import Report
 from desafio_mirante.infra.domain_encoder import DomainEncoder
 
 
 class JsonFormat:
-    def __init__(self, sale: Sale):
-        self.sale = sale
+    def __init__(self, report: Report):
+        self.report = report
 
     def format(self) -> str:
-        return json.dumps(self.sale, cls=DomainEncoder)
+        return json.dumps(self.report.to_dict(), cls=DomainEncoder)

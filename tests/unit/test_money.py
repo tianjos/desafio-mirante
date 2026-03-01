@@ -2,7 +2,7 @@ from decimal import Decimal
 
 import pytest
 
-from desafio_mirante.core.money import Money
+from desafio_mirante.core.entities.money import Money
 
 
 @pytest.mark.unit

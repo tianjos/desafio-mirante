@@ -5,6 +5,7 @@ from desafio_mirante.core.entities.money import Money
 from desafio_mirante.core.entities.product import Product
 from desafio_mirante.core.entities.sale import Sale
 from desafio_mirante.core.entities.sale_item import SaleItem
+from desafio_mirante.core.entities.report import Report
 from desafio_mirante.core.dtos.args import ArgsDTO
 from desafio_mirante.core.entities.format import Format
 from desafio_mirante.infra.file_parser import SaleParser
@@ -30,11 +31,15 @@ class CalculationUseCase:
                 )
             )
 
-        sale = Sale(
-            items=sale_items, start_at=args_dto.start, end_at=args_dto.end
+        sale = Sale(items=sale_items, start_at=args_dto.start, end_at=args_dto.end)
+
+        report = Report(
+            total_sales=sale.total(),
+            most_sold_product=sale.most_sold_product(),
+            total_by_product=sale.total_by_product(),
         )
 
         if args_dto.format == Format.TEXT:
-            return TextFormat(sale).format()
+            return TextFormat(report).format()
 
-        return JsonFormat(sale).format()
+        return JsonFormat(report).format()

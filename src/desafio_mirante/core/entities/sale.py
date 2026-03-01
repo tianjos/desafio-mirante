@@ -1,10 +1,12 @@
 from collections import defaultdict
 from dataclasses import dataclass, field
 from datetime import datetime
+from decimal import Decimal
 from functools import cached_property
 
 from desafio_mirante.core.entities.sale_item import SaleItem
 from desafio_mirante.core.entities.product import Product
+from desafio_mirante.core.entities.money import Money
 
 
 @dataclass(frozen=True)
@@ -29,16 +31,21 @@ class Sale:
         return filtered_items
 
     def total_by_product(self) -> dict[Product, int]:
-        total = defaultdict(int)
+        total = defaultdict(Decimal)
         for sale_item in self.filtered_by_date_range:
-            total[sale_item.product] += sale_item.quantity
+            total[sale_item.product] += sale_item.total_price().amount
         return dict(total)
 
     def total(self):
         return sum(
             sale_item.total_price() for sale_item in self.filtered_by_date_range
-        )
+        ) or Money(Decimal('0.00'))
 
-    def most_sold_product(self):
-        products = self.total_by_product()
+    def most_sold_product(self) -> Product:
+        total = defaultdict(int)
+        for sale_item in self.filtered_by_date_range:
+            total[sale_item.product] += sale_item.quantity
+
+        products = dict(total)
+
         return max(products, key=products.get)

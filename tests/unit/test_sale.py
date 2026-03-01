@@ -2,10 +2,10 @@ from decimal import Decimal
 
 import pytest
 
-from desafio_mirante.core.product import Product
-from desafio_mirante.core.sale import Sale
-from desafio_mirante.core.sale_item import SaleItem
-from desafio_mirante.core.money import Money
+from desafio_mirante.core.entities.product import Product
+from desafio_mirante.core.entities.sale import Sale
+from desafio_mirante.core.entities.sale_item import SaleItem
+from desafio_mirante.core.entities.money import Money
 
 
 @pytest.mark.unit
@@ -31,8 +31,8 @@ def test_total_sales_by_product():
     )
 
     assert sale.total_by_product() == {
-        Product(name='Product A', price=Money(Decimal('10.0'))): 5,
-        Product(name='Product B', price=Money(Decimal('20.0'))): 1,
+        Product(name='Product A', price=Money(Decimal('10.0'))): Decimal('50.0'),
+        Product(name='Product B', price=Money(Decimal('20.0'))): Decimal('20.0'),
     }
 
 
