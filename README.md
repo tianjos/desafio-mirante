@@ -34,3 +34,7 @@ uv run task test-cov
 uv run task build
 ```
 Após o build é possível rodar o script como desafio-mirante 
+
+```sh
+desafio-mirante --file='path_to_file' --format=json
+```
