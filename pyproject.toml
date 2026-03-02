@@ -41,7 +41,7 @@ format = 'ruff format'
 dev = 'uv run python src/desafio_mirante/main.py'
 test-unit = 'uv run pytest -m unit'
 test-e2e = 'uv run pytest -m e2e'
-test-coverage = 'uv run pytest -s -x --cov=desafio_mirante -vv'
+test-cov = 'uv run pytest -s -x --cov=desafio_mirante -vv'
 
 [tool.ruff]
 line-length = 85
