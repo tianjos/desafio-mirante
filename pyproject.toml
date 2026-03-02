@@ -10,7 +10,7 @@ requires-python = ">=3.14"
 dependencies = []
 
 [project.scripts]
-desafio-mirante = "desafio_mirante:main"
+desafio-mirante = "desafio_mirante.main:main"
 
 [build-system]
 requires = ["uv_build>=0.9.28,<0.10.0"]

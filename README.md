@@ -29,3 +29,8 @@ uv run task test-e2e
 uv run task test-cov
 ```
 
+### Build
+```sh
+uv run task build
+```
+Após o build é possível rodar o script como desafio-mirante 
