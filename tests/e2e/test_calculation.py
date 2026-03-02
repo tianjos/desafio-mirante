@@ -10,7 +10,7 @@ from desafio_mirante.core.dtos.args import ArgsDTO
 def test_calculation_json_output2(tmp_path, csv_factory, app):
     file_path = tmp_path / 'sales.csv'
     product = ProductFactory()
-    csv_factory([product], file_path, headers=list(product.keys()))
+    csv_factory([product], file_path, headers=['name', 'price', 'sold_at', 'quantity'])
     arguments = ArgumentsFactory(
         file=file_path, format='json', with_start_and_end=True
     )
@@ -23,7 +23,7 @@ def test_calculation_json_output2(tmp_path, csv_factory, app):
         'most_sold_product': product['name'],
     })
 
-    #assert not tmp_path.exists()
+    assert not tmp_path.exists()
 
 @pytest.mark.skip
 def test_calculation_json_output(temp_csv_file, app):

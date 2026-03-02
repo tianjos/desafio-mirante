@@ -36,9 +36,6 @@ class ProductFactory(factory.Factory):
     )
     quantity = factory.fuzzy.FuzzyInteger(1, 100)
 
-    def to_csv(self):
-        return f'{self.name},{self.price},{self.sold_at.isoformat()},{self.quantity}'
-
 
 class ArgumentsFactory(factory.Factory):
     class Meta:
