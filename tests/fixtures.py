@@ -1,44 +1,43 @@
-from datetime import datetime
+import csv
 from tempfile import NamedTemporaryFile
 
 import pytest
 
-from desafio_mirante.core.dtos.args import ArgsDTO
-from desafio_mirante.core.entities.format import Format
 from desafio_mirante.infra.file_parser import SaleParser
 from desafio_mirante.application.calculation_use_case import CalculationUseCase
 from desafio_mirante.app import App
-
-@pytest.fixture
-def file_content():
-    return """name,price,sold_at,quantity
-Notebook,4500.00,2025-03-31,1
-Mouse,120.50,2025-03-31,3
-Teclado,250.00,2025-03-31,4
-Monitor,1899.99,2025-03-31,5
-Mouse,120.50,2025-03-31,3
-Cadeira Gamer,1399.90,2025-03-31,1
-"""
+from tests.factories import ProductFactory
 
 
 @pytest.fixture
-def file_path(file_content):
-    with NamedTemporaryFile(mode='w', suffix='.csv') as temp_file:
-        temp_file.write(file_content)
-        temp_file.flush()
-        yield temp_file.name
+def csv_factory():
+    def _csv_factory(rows, path, headers):
+        with open(path, "w", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(f, fieldnames=headers)
+            writer.writeheader()
+            writer.writerows(rows)
+    return _csv_factory
+
+@pytest.fixture
+def temp_csv_file(csv_factory):
+    def temp_csv_file_factory(rows):
+        with NamedTemporaryFile(mode='w', suffix='.csv') as temp_file:
+            headers = list(
+                filter(
+                    lambda attr: not attr.startswith('_'),
+                    vars(ProductFactory),
+                )
+            )
+            csv_factory(rows, temp_file.name, headers)
+
+            temp_file.flush()
+
+            yield temp_file
+
+    return temp_csv_file_factory
 
 
 @pytest.fixture
-def args_dto(file_path):
-    return ArgsDTO(
-        file_path=file_path,
-        format=Format.JSON,
-        start=datetime.fromisoformat('2025-03-31'),
-        end=None
-    )
-
-@pytest.fixture
-def app(file_path):
+def app():
     use_case = CalculationUseCase(parser=SaleParser())
     return App(use_case=use_case)

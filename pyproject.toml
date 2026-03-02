@@ -18,11 +18,20 @@ build-backend = "uv_build"
 
 [dependency-groups]
 dev = [
+    "factory-boy>=3.3.3",
+    "faker>=40.5.1",
     "pytest>=9.0.2",
     "pytest-cov>=7.0.0",
     "ruff>=0.15.4",
     "taskipy>=1.14.1",
 ]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
 
 [tool.taskipy.tasks]
 lint = 'ruff check'
@@ -42,5 +51,4 @@ quote-style = 'single'
 
 [tool.pytest.ini_options]
 pythonpath = ['src', 'tests']
-asyncio_mode = 'auto'
 addopts = '-p no:warnings'
