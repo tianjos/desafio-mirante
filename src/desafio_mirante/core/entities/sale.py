@@ -48,4 +48,7 @@ class Sale:
 
         products = dict(total)
 
+        if not products:
+            return Product(name='No products sold', price=Money(Decimal('0.00')))
+
         return max(products, key=products.get)

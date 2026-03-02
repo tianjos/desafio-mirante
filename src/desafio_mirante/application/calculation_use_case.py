@@ -31,7 +31,11 @@ class CalculationUseCase:
                 )
             )
 
-        sale = Sale(items=sale_items, start_at=args_dto.start, end_at=args_dto.end)
+        sale = Sale(
+            items=sale_items,
+            start_at=args_dto.start, 
+            end_at=args_dto.end
+        )
 
         report = Report(
             total_sales=sale.total(),
