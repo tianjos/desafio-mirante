@@ -1,5 +1,8 @@
 ## Desafio Python - Gerador de Relatório de Vendas Avançado
 
+### Arquitetura
+Utilizado uma arquitetura clean architecture, separando a parte da infra do dominio, dessa forma, é possível aproveitar todo o core da aplicação em outros projetos que não são efetivamente cli.
+
 ### Comandos
 
 
