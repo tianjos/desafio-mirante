@@ -33,15 +33,15 @@ class Sale:
     def total_by_product(self) -> dict[Product, int]:
         total = defaultdict(Decimal)
         for sale_item in self.filtered_by_date_range:
-            total[sale_item.product] += sale_item.total_price().amount
+            total[sale_item.product] += sale_item.total_price.amount
         return dict(total)
 
     def total(self):
         return sum(
-            sale_item.total_price() for sale_item in self.filtered_by_date_range
+            sale_item.total_price for sale_item in self.filtered_by_date_range
         ) or Money(Decimal('0.00'))
 
-    def most_sold_product(self) -> Product:
+    def most_sold_product(self) -> list[Product]:
         total = defaultdict(int)
         for sale_item in self.filtered_by_date_range:
             total[sale_item.product] += sale_item.quantity
@@ -49,6 +49,12 @@ class Sale:
         products = dict(total)
 
         if not products:
-            return Product(name='No products sold', price=Money(Decimal('0.00')))
+            return [Product(name='No products sold', price=Money(Decimal('0.00')))]
 
-        return max(products, key=products.get)
+        most_sold = max(products, key=products.get)
+
+        return [
+            product for product, quantity in products.items() 
+            if quantity == products[most_sold]
+        ]
+

@@ -7,7 +7,7 @@ Utilizado uma arquitetura clean architecture, separando a parte da infra do domi
 
 
 ```sh
-uv run dev --file='path_to_file' --start='2025-01-31' --end='2026-01-31' --format=json|text
+uv run task dev --file='path_to_file' --start='2025-01-31' --end='2026-01-31' --format=json|text
 ```
 
 ## Testes

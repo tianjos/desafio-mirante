@@ -13,5 +13,5 @@ class TextFormat:
                 f'{product.name} - unit({product.price}) = total: BRL {total_price}'
             )
         lines.append(f'Total: BRL {self.report.total_sales}')
-        lines.append(f'Most sold product: {self.report.most_sold_product.name}')
+        lines.append(f'Most sold product: {", ".join([product.name for product in self.report.most_sold_product])}')
         return '\n'.join(lines)
